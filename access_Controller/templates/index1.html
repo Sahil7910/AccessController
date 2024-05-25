@@ -1,0 +1,99 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+  	
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+		
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
+    
+  </head>
+  <body>
+ 	
+		<div class="container d-md-flex align-items-stretch">
+     
+      
+
+      <nav id="sidebar">
+				<div class="p-4 pt-5">
+					<h5 style="margin-left:50px">Senzor IO</h5>
+	        <ul class="list-unstyled components mb-5">
+	          
+            <li>
+	            <a href="#pageSubmenu0" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Doors</a>
+	            <ul class="collapse list-unstyled" id="pageSubmenu0">
+                <li><a href="adddoor"><span class="fa fa-chevron-right mr-2"></span> New</a></li>
+                <li><a href="viewdoors"><span class="fa fa-chevron-right mr-2"></span> List</a></li>
+	            </ul>
+	          </li>
+            
+            <li>
+	            <a href="#pageSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Readers</a>
+	            <ul class="collapse list-unstyled" id="pageSubmenu1">
+                <li><a href="addreader"><span class="fa fa-chevron-right mr-2"></span> New</a></li>
+                <li><a href="viewreader"><span class="fa fa-chevron-right mr-2"></span> List</a></li>
+	            </ul>
+	          </li>
+
+
+
+            <li>
+	            <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Users</a>
+	            <ul class="collapse list-unstyled" id="pageSubmenu2">
+                <li><a href="adduser"><span class="fa fa-chevron-right mr-2"></span> New</a></li>
+                <li><a href="viewuser"><span class="fa fa-chevron-right mr-2"></span> List</a></li>
+                <li><a href="#"><span class="fa fa-chevron-right mr-2"></span> Import</a></li>
+	            </ul>
+	          </li>
+
+
+
+	          <li>
+	            <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Department</a>
+	            <ul class="collapse list-unstyled" id="pageSubmenu3">
+                <li><a href="addDepartment"><span class="fa fa-chevron-right mr-2"></span> New</a></li>
+                <li><a href="viewDepartment"><span class="fa fa-chevron-right mr-2"></span> List</a></li>
+         
+	            </ul>
+	          </li>
+
+
+	          <li>
+	            <a href="#pageSubmenu4" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Cards</a>
+	            <ul class="collapse list-unstyled" id="pageSubmenu4">
+                <li><a href="viewCard"><span class="fa fa-chevron-right mr-2"></span> List</a></li>
+                <li><a href="addCard"><span class="fa fa-chevron-right mr-2"></span> Import</a></li>
+	          </li>
+
+            
+            
+	          
+	        </ul>
+					
+					
+	      </div>
+    	</nav>
+    
+
+      {% comment %} <div id="content" class="p-4 p-md-5 pt-5">
+        <h2 class="mb-4"></h2>
+        
+		  </div> {% endcomment %}
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/popper.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    {% block content %}
+
+    {% endblock  %}
+  </body>
+</html>

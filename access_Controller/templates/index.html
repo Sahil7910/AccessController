@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
+        <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+        <script src="{% static 'styles/bootstrap4/popper.js' %}"></script>
+        <script src="{% static 'styles/bootstrap4/bootstrap.min.js' %}"></script>
+    </head>
+    <body>
+        
+        <div class="wrapper fadeInDown">
+            <div class="formContent1">
+              <!-- Tabs Titles -->
+          
+              
+          
+              <!-- Login Form -->
+              <form action="org" method="post" id="form"> 
+                {% csrf_token %}
+
+                <br>
+                    <h1 style="margin-left:50px">Welcome to SenzorID </h1>
+                    <h1 style="margin-left:70px">Access Controller</h1><br>
+
+                    
+
+                    <div class="mb-3">
+                        <label  >InputYour Product license</label>
+                        <input class="form-control form-control-sm" id="formFileSm" type="file" value="browse">
+                      </div>
+
+                    <button type="submit" style="margin-left:190px" class="btn btn-primary">Ok</button>
+                    <br><br><br><br>
+                    
+
+              </form>
+          
+              
+          
+            </div>
+          </div>
+
+
+        
+        
+    </body>
+</html>

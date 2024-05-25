@@ -1,0 +1,57 @@
+{% extends "index1.html" %}
+{% load static %}
+{% comment %} <!DOCTYPE html> {% endcomment %}
+
+{% comment %} <html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
+        <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+        <script src="{% static 'styles/bootstrap4/popper.js' %}"></script>
+        <script src="{% static 'styles/bootstrap4/bootstrap.min.js' %}"></script> 
+    </head>
+    <body> {% endcomment %}
+        
+        {%block content%}
+        <div class="container ">
+            <div class="userformContent">
+                <form action="login" method="post" id="form">
+            
+                
+                {% csrf_token %}
+                    
+                <h1>Add User</h1><br>
+                
+                <lable>Name:</lable>
+                <input type="text"> <br>
+                
+                <label style="margin-right:8px">Designation:</label>
+                <select style="margin-right:52px;" name="Reader" id="Reader">
+                    <option value="In Reader">Developer</option>
+                    <option value="Out Reader">QA Anylyst</option>
+                </select><br>
+
+                <label style="margin-right:8px">Department:</label>
+                <select style="margin-right:52px;margin-top:6px" name="Reader" id="Reader">
+                    <option value="In Reader">Developement</option>
+                    <option value="Out Reader">QA</option>
+                </select><br>
+                
+                <lable>CardID:</lable>
+                <input style="margin-right:16px;margin-top:6px" type="text"> <br>
+
+                <input type="submit" style="margin-top:30px;margin-left:60px;" value="Save">
+          
+
+        </form>
+    </div>
+</div>
+
+      {%endblock%}
+    {% comment %} </body>
+</html> {% endcomment %}

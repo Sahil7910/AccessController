@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
+        <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+        <script src="{% static 'styles/bootstrap4/popper.js' %}"></script>
+        <script src="{% static 'styles/bootstrap4/bootstrap.min.js' %}"></script>
+    </head>
+    <body>
+      <h1 style="margin-left:60px;margin-top:20px;">Senzor IO</h1>
+        <div class="wrapper fadeInDown">
+          
+            <div class="formContent">
+         
+              <form action="home" method="post" id="form">
+                {% csrf_token %}
+                <h3 style="margin-left:180px;margin-top:10px">Log IN</h3><br>
+
+                <lable style="margin-left:100px;">Username:</lable><br>
+                <input type="text" id="username"  name="username" placeholder="username"><br>
+                <lable style="margin-left:100px;">Password:</lable><br>
+                <input type="text" id="password"  name="password" placeholder="password">
+                <input type="submit" style="margin-left:130px;margin-top:20px;" value="Log In">
+              </form>
+          
+            
+
+          
+            </div>
+          </div>
+
+        
+        
+    </body>
+</html>
