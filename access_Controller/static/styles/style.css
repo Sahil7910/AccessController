@@ -395,7 +395,7 @@ margin-bottom: 20px;
 .background h3{
   margin-top: 30%;
   margin-left: 45%;
-  font-family: "Times New Roman", Times, serif;
+  font-family: "Times New Roman", Times, serif; 
   filter: blur(0.5px);
   background: rgba(white, 0.2);
   text-shadow: 3px 5px 3px black; 
