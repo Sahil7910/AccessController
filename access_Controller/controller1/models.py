@@ -13,7 +13,7 @@ class Reader(models.Model):
     macID=models.CharField(max_length=50)
     lastseen=models.DateTimeField()
     status=models.BooleanField()
-    doorlocked=models.CharField()
+    doorlocked=models.CharField(max_length=50)
 
 class User (models.Model):
     name=models.CharField(max_length=50)
@@ -24,5 +24,5 @@ class Card(models.Model):
     cardid=models.CharField( max_length=50)
     import_date=models.DateTimeField(auto_now=False, auto_now_add=False)
     deactivate_date=models.DateTimeField()
-    username=models.CharField()
+    username=models.CharField(max_length=50)
     status=models.BooleanField()
