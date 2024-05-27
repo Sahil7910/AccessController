@@ -5,8 +5,18 @@
         {% block content %}
         
         <div class="container ">
+
+            <div class="col-md-12">
+                {% for msg in messages %}
+                    {{msg}}
+                {% endfor %}    
+
+
+
+                
             <div class="doorformContent">
-        <form action="login" method="post" id="form">
+
+        <form action="adddoor" method="post" id="form">
             
                 
                 {% csrf_token %}
@@ -14,10 +24,10 @@
                 <h1>Add Door</h1><br>
                 
                 <lable>Floor:</lable>
-                <input type="text"> <br>
+                <input type="text" name="floor"> <br>
                 
                 <lable>Name:</lable>
-                <input type="text"><br>
+                <input type="text" name="name"><br>
 
                 <label >Reader:</label>
                 <select style="margin-right:10px;margin-top:10px;" name="Reader" id="Reader">

@@ -1,11 +1,13 @@
 from django.db import models
+from datetime import datetime    
 
 # Create your models here.
 
 class Door (models.Model):
     floor= models.CharField(max_length=20)
     name= models.CharField(max_length=50)
-    lastaccess=models.DateTimeField()
+    reader=models.CharField(max_length=30,default='In Reader')
+    lastaccess=models.DateTimeField(default=datetime.now())
 
 
 class Reader(models.Model):
