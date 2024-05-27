@@ -69,10 +69,28 @@ def viewreader(request):
 
 
 def adduser(request):
-    return render (request,'addUser.html')
+    dept = Department.objects.all()
+    desg= Designation.objects.all()
+
+    if request.method=='POST':
+            name=request.POST['uname']
+            cardid=request.POST['cardid']
+            dep_id=request.POST['Department']
+            desg_id=request.POST['Designation']
+
+            department= Department.objects.get(pk=dep_id)
+            designation= Designation.objects.get(pk=desg_id)
+            adduser= User(name=name,cardid=cardid,designation=designation,department=department)
+            adduser.save()
+            return render (request,'addUser.html')
+    else:
+          return render (request,'addUser.html',{'dept':dept,'desg':desg})
 
 def viewuser(request):
-    return render(request,'viewuser.html')
+
+    users= User.objects.all()
+
+    return render(request,'viewuser.html',{'users':users})
 
 
 
@@ -94,8 +112,6 @@ def addDepartment(request):
 
 def viewDepartment(request):
     return render (request,'viewDepartment.html')
-
-
 
 
 

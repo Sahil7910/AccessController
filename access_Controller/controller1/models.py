@@ -17,11 +17,6 @@ class Reader(models.Model):
     status=models.BooleanField()
     doorlocked=models.CharField(max_length=50)
 
-class User (models.Model):
-    name=models.CharField(max_length=50)
-    cardid=models.CharField(max_length=50)
-    status=models.BooleanField()
-
 class Card(models.Model):
     cardid=models.CharField( max_length=50)
     import_date=models.DateTimeField(auto_now=False, auto_now_add=False)
@@ -40,4 +35,15 @@ class Designation(models.Model):
     department=models.ForeignKey(Department,on_delete=models.CASCADE)
 
     def __str__(self):
-        return  self.desg_name+" "+self.department
+        return self.department
+
+
+class User (models.Model):
+    name=models.CharField(max_length=50)
+    cardid=models.CharField(max_length=50)
+    status=models.BooleanField(default=True)
+    designation= models.ForeignKey( Designation,on_delete=models.CASCADE)
+    department= models.ForeignKey(Department, on_delete=models.CASCADE)
+        
+    def __str__(self):
+        return self.designation+" "+self.department
