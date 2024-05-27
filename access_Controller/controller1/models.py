@@ -28,3 +28,16 @@ class Card(models.Model):
     deactivate_date=models.DateTimeField()
     username=models.CharField(max_length=50)
     status=models.BooleanField()
+
+class Department(models.Model):
+    department_name=models.CharField(max_length=50)
+    
+    def __str__(self):
+        return self.department_name
+
+class Designation(models.Model):
+    desg_name=models.CharField(max_length=50)
+    department=models.ForeignKey(Department,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return  self.desg_name+" "+self.department

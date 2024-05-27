@@ -6,7 +6,7 @@
         
         <div class="container ">
             <div class="doorformContent">
-        <form action="login" method="post" id="form">
+        <form action="addDesignation" method="post" id="form">
             
                 
                 {% csrf_token %}
@@ -14,13 +14,15 @@
                 <h1>Add Designation</h1><br>
                 
                 <lable>Name:</lable>
-                <input type="text"> <br>
+                <input type="text" name="designation"> <br>
                 
 
                 <label >Department:</label>
+
                 <select style="margin-right:10px;margin-top:10px;" name="Department" id="Department">
-                    <option value="Software Developement">Software Developement</option>
-                    <option value="Sales">Sales</option>
+                    {%for dept in dept %}
+                    <option value='{{dept.id}}'>{{dept.department_name}}</option>
+                    {% endfor %}
                 </select>    
 
                 <input type="submit" style="margin-top:30px;margin-left:60px;" value="Save">

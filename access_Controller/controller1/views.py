@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from controller1.models import Door
+from controller1.models import *
 from django.contrib import messages
 
 # Create your views here.
@@ -74,17 +74,56 @@ def adduser(request):
 def viewuser(request):
     return render(request,'viewuser.html')
 
+
+
+
 def addDepartment(request):
-    return render(request,'addDepartment.html')
+    if request.method == 'POST':
+            department= request.POST['Department']
+
+            dept= Department(department_name=department)
+            dept.save()
+            print(department)
+            return render(request,'addDepartment.html')
+    else:   
+        return render(request,'addDepartment.html')
+    
+
+
+
 
 def viewDepartment(request):
     return render (request,'viewDepartment.html')
 
-def addDesignation(request):
-    return render(request,'addDesignation.html')
+
+
+
+
+
+def addDesignation(request,):
+
+    dept = Department.objects.all()
+
+    if request.method == 'POST':
+            designation= request.POST['designation']
+            dept_id=request.POST['Department']
+
+            department= Department.objects.get(pk=dept_id)
+
+            add_designation= Designation(desg_name=designation, department= department)
+            add_designation.save()
+            return render(request,'addDesignation.html')
+    else:
+         return render(request,'addDesignation.html',{'dept':dept})
+    
+
+
 
 def viewDesignation(request):
-    return render (request,'viewDesignation.html')
+
+    desg= Designation.objects.all()
+
+    return render (request,'viewDesignation.html',{'desg':desg})
 
 
 def addCard(request):
