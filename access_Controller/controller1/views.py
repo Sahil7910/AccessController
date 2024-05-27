@@ -50,9 +50,18 @@ def adddoor(request):
          return render(request,'addDoor.html')
 
 def addreader(request):
+    if request.method== 'POST':
+        model=request.POST['model']
+        macid=request.POST['macid']
+        doorlock=request.POST['doorlock']
 
-    
-    return render(request,'addReader.html')
+        # door= Door(model=model, macid=macid, doorlock= doorlock)
+        # door.save()
+        messages.success(request, 'door added successfully...')
+        print("floor:"+model+ "name:"+macid +"reader:"+ doorlock)
+        return render (request,'addreader.html')
+    else:
+        return render(request,'addReader.html')
 
 def viewreader(request):
     return render (request,'viewReaders.html')

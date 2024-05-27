@@ -20,7 +20,7 @@
         {%block content%}
         <div class="container ">
             <div class="doorformContent">
-        <form action="login" method="post" id="form">
+        <form action="addreader" method="post" id="form">
             
                 
                 {% csrf_token %}
@@ -28,13 +28,13 @@
                 <h1>Add Reader</h1><br>
                 
                 <lable>Model No:</lable>
-                <input type="text"> <br>
+                <input type="text" name="model"> <br>
                 
                 <lable style="margin-left:25px">Mac ID:</lable>
-                <input type="text" ><br>
+                <input type="text" name="macid"><br>
 
                 <label style="margin-right:8px">Door Locked:</label>
-                <input style="margin-right:30px" type="text"><br>  
+                <input style="margin-right:30px" type="text" name="doorlock"><br>  
 
                 <input type="submit" style="margin-top:30px;margin-left:60px;" value="Save">
           </div>
