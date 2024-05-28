@@ -13,8 +13,8 @@ class Door (models.Model):
 class Reader(models.Model):
     model=models.CharField(max_length=50)
     macID=models.CharField(max_length=50)
-    lastseen=models.DateTimeField()
-    status=models.BooleanField()
+    lastseen=models.DateTimeField(default=datetime.now())
+    status=models.BooleanField(default=True)
     doorlocked=models.CharField(max_length=50)
 
 class Card(models.Model):
@@ -28,14 +28,13 @@ class Department(models.Model):
     department_name=models.CharField(max_length=50)
     
     def __str__(self):
-        return self.department_name
+        return self.department_name 
 
 class Designation(models.Model):
     desg_name=models.CharField(max_length=50)
     department=models.ForeignKey(Department,on_delete=models.CASCADE)
-
     def __str__(self):
-        return self.department
+        return self.desg_name 
 
 
 class User (models.Model):
@@ -46,4 +45,4 @@ class User (models.Model):
     department= models.ForeignKey(Department, on_delete=models.CASCADE)
         
     def __str__(self):
-        return self.designation+" "+self.department
+        return self.designation+" "+self.department or ''

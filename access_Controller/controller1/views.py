@@ -57,14 +57,17 @@ def addreader(request):
 
         # door= Door(model=model, macid=macid, doorlock= doorlock)
         # door.save()
-        messages.success(request, 'door added successfully...')
-        print("floor:"+model+ "name:"+macid +"reader:"+ doorlock)
+        reader=Reader(model=model,macID=macid, doorlocked=doorlock)
+        reader.save()
         return render (request,'addreader.html')
     else:
         return render(request,'addReader.html')
 
 def viewreader(request):
-    return render (request,'viewReaders.html')
+
+    reader= Reader.objects.all()
+
+    return render (request,'viewReaders.html',{'reader':reader})
 
 
 

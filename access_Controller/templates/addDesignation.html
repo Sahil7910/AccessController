@@ -19,8 +19,9 @@
 
                 <label >Department:</label>
 
-                <select style="margin-right:10px;margin-top:10px;" name="Department" id="Department">
+                <select style="margin-right:50px;margin-top:10px;" name="Department" id="Department">
                     {%for dept in dept %}
+                    <option selected="selected" disabled>Select Department</option>
                     <option value='{{dept.id}}'>{{dept.department_name}}</option>
                     {% endfor %}
                 </select>    
