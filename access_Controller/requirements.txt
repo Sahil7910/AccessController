@@ -7,3 +7,4 @@ soupsieve==2.5
 sqlparse==0.5.0
 tzdata==2024.1
 fontawesomefree==5.15.4
+openpyxl==2.5.1

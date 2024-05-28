@@ -46,3 +46,7 @@ class User (models.Model):
         
     def __str__(self):
         return self.designation+" "+self.department or ''
+
+class ImoprtCard(models.Model):
+    CardID = models.FileField(upload_to="excel") 
+

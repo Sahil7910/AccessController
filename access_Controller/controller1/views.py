@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from controller1.models import *
 from django.contrib import messages
+from django.contrib.auth.models import auth
+import openpyxl
 
 # Create your views here.
 def index(request):
@@ -24,7 +26,27 @@ def organization(request):
             return render (request, 'org.html')
 
 def login(request):
-    return render(request,'login.html')
+
+    if request.method == 'POST':
+         username=request.POST['username']
+         password=request.POST['password']
+         user = auth.authenticate(username=username,password=password)
+
+         if user is not None:
+                auth.login(request,user)
+                return redirect('home')
+         else:
+                messages.error(request,'invalid credentials...')
+                return redirect('login')
+
+    else:
+         return render(request,'login.html')
+
+def logout(request):
+    auth.logout(request)
+    return redirect('login')
+
+
 
 def home(request):
     return render (request,'home.html')
@@ -145,8 +167,33 @@ def viewDesignation(request):
     return render (request,'viewDesignation.html',{'desg':desg})
 
 
-def addCard(request):
-    return render(request,'addCard.html')
+def importCard(request):
+
+    if request.method=='POST':
+        excel_file = request.FILES["excel_file"]
+
+        wb = openpyxl.load_workbook(excel_file)
+
+        # worksheet = wb["Sheet1"]
+        # print(worksheet)
+
+        # excel_data = list()
+        
+        # for row in worksheet.iter_rows():
+        #     row_data = list()
+        #     for cell in row:
+        #         row_data.append(str(cell.value))
+        #     excel_data.append(row_data)
+
+        cardid= ImoprtCard(CardID=wb)
+        cardid.save()
+
+        return render(request,'importCard.html',{"excel_data":excel_data})
+    else:
+          return render(request,'importCard.html')
+    
+
+
 
 def viewCard(request):
     return render (request,'viewCard.html')
