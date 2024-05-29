@@ -48,5 +48,5 @@ class User (models.Model):
         return self.designation+" "+self.department or ''
 
 class ImoprtCard(models.Model):
-    CardID = models.FileField(upload_to="excel") 
+    CardID = models.CharField(max_length=50) 
 

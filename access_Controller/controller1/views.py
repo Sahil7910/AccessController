@@ -2,9 +2,15 @@ from django.shortcuts import render,redirect
 from controller1.models import *
 from django.contrib import messages
 from django.contrib.auth.models import auth
-import openpyxl
-
+from openpyxl import load_workbook
+import pandas as pd
+import itertools
+import csv
 # Create your views here.
+
+
+
+
 def index(request):
 
 
@@ -17,9 +23,6 @@ def organization(request):
         orgname=request.POST['orgname']
         orgid=request.POST['orgid']
 
-
-
-        print("orgname:",orgname, "OrgID:",orgid)
         return render (request,'login.html')
 
     else:
@@ -170,25 +173,16 @@ def viewDesignation(request):
 def importCard(request):
 
     if request.method=='POST':
-        excel_file = request.FILES["excel_file"]
-
-        wb = openpyxl.load_workbook(excel_file)
-
-        # worksheet = wb["Sheet1"]
-        # print(worksheet)
-
-        # excel_data = list()
         
-        # for row in worksheet.iter_rows():
-        #     row_data = list()
-        #     for cell in row:
-        #         row_data.append(str(cell.value))
-        #     excel_data.append(row_data)
-
-        cardid= ImoprtCard(CardID=wb)
-        cardid.save()
-
-        return render(request,'importCard.html',{"excel_data":excel_data})
+        file = request.FILES['files']
+        csv_reader= pd.read_csv(file)
+        
+        for index, row in csv_reader.iterrows():
+             
+             impcard= ImoprtCard(CardID=row['cardid'])
+             impcard.save()
+       
+        return render(request,'importCard.html')
     else:
           return render(request,'importCard.html')
     
