@@ -2,6 +2,10 @@ from django.urls import path
 from controller1 import views
 
 urlpatterns = [
+
+    #    path('',views.getData),
+    path('register/',views.registerReader),
+
     path("", views.index, name="index"),
     path("org",views.organization, name="organization"),
     path("login",views.login, name="login"),

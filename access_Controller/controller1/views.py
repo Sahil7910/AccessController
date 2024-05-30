@@ -6,6 +6,11 @@ from openpyxl import load_workbook
 import pandas as pd
 import itertools
 import csv
+import requests
+from rest_framework import status
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+from .serializers import registerSerializer
 # Create your views here.
 
 
@@ -73,26 +78,58 @@ def adddoor(request):
         return render (request,'addDoor.html')
     else:
          return render(request,'addDoor.html')
+    
+
 
 def addreader(request):
+    
     if request.method== 'POST':
         model=request.POST['model']
         macid=request.POST['macid']
         doorlock=request.POST['doorlock']
 
-        # door= Door(model=model, macid=macid, doorlock= doorlock)
-        # door.save()
+        
         reader=Reader(model=model,macID=macid, doorlocked=doorlock)
         reader.save()
         return render (request,'addreader.html')
     else:
         return render(request,'addReader.html')
 
-def viewreader(request):
 
-    reader= Reader.objects.all()
 
-    return render (request,'viewReaders.html',{'reader':reader})
+@api_view(['GET'])
+def getData(request):
+    app = register.objects.all()
+    serializers = registerSerializer(app, many=True)
+    return Response(serializers.data)
+
+
+@api_view(['GET'])
+def registerReader(request):
+    mac = request.GET['mac']
+    mac= register(mac=mac)
+    mac.save()
+    print(mac)
+   
+    return Response("successfully Register!!!", status=status.HTTP_201_CREATED)
+
+
+    
+
+
+def viewreader(request,mac):
+
+    reader_data= addreader(mac)
+    context={'reader_data':reader_data}
+
+    # reader= Reader.objects.all()
+
+    return render (request,'viewReaders.html',{'reader':context})
+
+
+
+
+
 
 
 
@@ -134,9 +171,6 @@ def addDepartment(request):
     else:   
         return render(request,'addDepartment.html')
     
-
-
-
 
 def viewDepartment(request):
     return render (request,'viewDepartment.html')
@@ -184,7 +218,7 @@ def importCard(request):
        
         return render(request,'importCard.html')
     else:
-          return render(request,'importCard.html')
+        return render(request,'importCard.html')
     
 
 

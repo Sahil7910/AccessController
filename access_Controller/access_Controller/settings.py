@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django_pandas',
     'bootstrap5',
     'controller1',
+    'rest_framework',
     
 ]
 

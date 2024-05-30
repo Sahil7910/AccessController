@@ -50,3 +50,6 @@ class User (models.Model):
 class ImoprtCard(models.Model):
     CardID = models.CharField(max_length=50) 
 
+
+class register(models.Model):
+    mac=models.CharField(max_length=250)
