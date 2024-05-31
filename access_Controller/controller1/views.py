@@ -2,25 +2,26 @@ from django.shortcuts import render,redirect
 from controller1.models import *
 from django.contrib import messages
 from django.contrib.auth.models import auth
-from openpyxl import load_workbook
+
 import pandas as pd
-import itertools
+
 import csv
 import requests
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from .serializers import registerSerializer
+
 # Create your views here.
 
 
 
 
 def index(request):
-
-
-
     return render (request,'index.html')
+
+
+
+
 
 def organization(request):
 
@@ -32,6 +33,10 @@ def organization(request):
 
     else:
             return render (request, 'org.html')
+
+
+
+
 
 def login(request):
 
@@ -50,6 +55,10 @@ def login(request):
     else:
          return render(request,'login.html')
 
+
+
+
+
 def logout(request):
     auth.logout(request)
     return redirect('login')
@@ -59,11 +68,17 @@ def logout(request):
 def home(request):
     return render (request,'home.html')
 
+
+
+
 def viewdoor(request):
 
     doors = Door.objects.all()
 
     return render (request,'viewdoors.html',{'doors':doors})
+
+
+
 
 def adddoor(request):
     if request.method== 'POST':
@@ -83,33 +98,33 @@ def adddoor(request):
 
 def addreader(request):
     
-    if request.method== 'POST':
+    if request.method == 'POST':
         model=request.POST['model']
         macid=request.POST['macid']
         doorlock=request.POST['doorlock']
-
-        
-        reader=Reader(model=model,macID=macid, doorlocked=doorlock)
-        reader.save()
+        if Reader.objects.filter(macID=macid).exists():
+             pass
+        else:
+             reader=Reader(model=model,macID=macid, doorlocked=doorlock)
+             reader.save()
         return render (request,'addreader.html')
     else:
         return render(request,'addReader.html')
 
 
 
-@api_view(['GET'])
-def getData(request):
-    app = register.objects.all()
-    serializers = registerSerializer(app, many=True)
-    return Response(serializers.data)
+
 
 
 @api_view(['GET'])
 def registerReader(request):
-    mac = request.GET['mac']
-    mac= register(mac=mac)
-    mac.save()
-    print(mac)
+    macid = request.GET['mac']
+
+    if Reader.objects.filter(macID=macid).exists():
+        return Response("Reader Already Exists!!!", status=status.HTTP_406_NOT_ACCEPTABLE)
+    else:
+        mac= Reader(macID=mac)
+        mac.save()
    
     return Response("successfully Register!!!", status=status.HTTP_201_CREATED)
 
@@ -117,14 +132,11 @@ def registerReader(request):
     
 
 
-def viewreader(request,mac):
+def viewreader(request):
 
-    reader_data= addreader(mac)
-    context={'reader_data':reader_data}
+    reader= Reader.objects.all()
 
-    # reader= Reader.objects.all()
-
-    return render (request,'viewReaders.html',{'reader':context})
+    return render (request,'viewReaders.html',{'reader':reader})
 
 
 

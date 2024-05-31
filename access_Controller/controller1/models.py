@@ -52,4 +52,4 @@ class ImoprtCard(models.Model):
 
 
 class register(models.Model):
-    mac=models.CharField(max_length=250)
+    mac=models.CharField(max_length=222)
