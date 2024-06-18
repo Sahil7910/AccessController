@@ -6,7 +6,7 @@
         
         <div class="container ">
             <div class="doorformContent">
-        <form action="importCard" method="post" enctype="multipart/form-data">
+        <form action="addCard" method="post" enctype="multipart/form-data">
             
                 
                 {% csrf_token %}
@@ -14,11 +14,11 @@
                 <h1>Import Card</h1><br>
                 
                 <div class="mb-3">
-                    <label  >InputYour Product license</label>
-                    <input class="form-control form-control-lg" id="formFileSm" type="file">
+                    <label  ></label>
+                    <input type="file"  name="files" style="margin-top:10%;margin-left:60px">
                   </div>
                 
-                <input type="submit" style="margin-top:30px;margin-left:60px;" value="Save">
+                <input type="submit" style="margin-top:50px;margin-left:40px;" value="Save">
 
         </form>
     </div>

@@ -13,7 +13,7 @@ class Door (models.Model):
 class Reader(models.Model):
     model=models.CharField(max_length=50)
     macID=models.CharField(max_length=50)
-    lastseen=models.DateTimeField(default=datetime.now())
+    lastseen=models.DateTimeField()
     status=models.BooleanField(default=True)
     doorlocked=models.CharField(max_length=50)
 
@@ -23,6 +23,9 @@ class Card(models.Model):
     deactivate_date=models.DateTimeField()
     username=models.CharField(max_length=50)
     status=models.BooleanField()
+
+    def __str__(self):
+        return self.cardid
 
 class Department(models.Model):
     department_name=models.CharField(max_length=50)
@@ -39,17 +42,27 @@ class Designation(models.Model):
 
 class User (models.Model):
     name=models.CharField(max_length=50)
-    cardid=models.CharField(max_length=50)
-    status=models.BooleanField(default=True)
-    designation= models.ForeignKey( Designation,on_delete=models.CASCADE)
-    department= models.ForeignKey(Department, on_delete=models.CASCADE)
+    card_id=models.ForeignKey(Card,on_delete=models.CASCADE)
+    student_id=models.CharField(max_length=50)
+    status=models.IntegerField(max_length=3,default=0)
+
+
+    # status=models.BooleanField(default=True)
+    # designation= models.ForeignKey( Designation,on_delete=models.CASCADE)
+    # department= models.ForeignKey(Department, on_delete=models.CASCADE)
         
-    def __str__(self):
-        return self.designation+" "+self.department or ''
+    # def __str__(self):
+    #     return self.designation+" "+self.department or ''
 
 class ImoprtCard(models.Model):
     CardID = models.CharField(max_length=50) 
 
 
 class register(models.Model):
-    mac=models.CharField(max_length=222)
+ mac=models.IntegerField()
+
+class Checkin(models.Model):
+    cardid=models.CharField(max_length=250)
+    macID=models.CharField(max_length=250)
+    datetime=models.DateTimeField(default=datetime.now())
+    
