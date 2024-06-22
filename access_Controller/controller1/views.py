@@ -277,13 +277,18 @@ def addCard(request):
         file = request.FILES['files']
         csv_reader = pd.read_csv(file)
 
-        for index, row in csv_reader.iterrows():
+    try:
+        for row in csv_reader.iterrows():
+
             impcard = Card(cardid=row['cardid'],import_date=today,status=0)
             impcard.save()
+            messages.success(request,"Import Successfully")
+            return render(request, 'importCard.html')
+    except:
+        messages.error(request, "Card ID Already Exists!!!")
+        return render(request, 'importCard.html')
 
-        return render(request, 'importCard.html')
-    else:
-        return render(request, 'importCard.html')
+    return render(request, 'importCard.html')
 
 
 def viewCard(request):
