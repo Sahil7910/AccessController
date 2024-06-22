@@ -6,7 +6,7 @@
         
         <div class="container ">
             <div class="doorformContent">
-        <form action="login" method="post" id="form">
+        <form action="addDepartment" method="post" id="form">
             
                 
                 {% csrf_token %}
@@ -14,12 +14,8 @@
                 <h1>Add Department</h1><br>
                 
                 <lable>Name:</lable>
-                <input type="text"> <br>
+                <input type="text" name="Department"> <br>
                 
-               
-
-                  
-
                 <input type="submit" style="margin-top:30px;margin-left:60px;" value="Save">
          
 

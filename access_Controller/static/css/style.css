@@ -8208,11 +8208,11 @@ h1, h2, h3, h4, h5,
   #sidebar ul.components {
     padding: 0; }
   #sidebar ul li {
-    font-size: 14px; }
+    font-size: 18px; }
     #sidebar ul li > ul {
       margin-left: 10px; }
       #sidebar ul li > ul li {
-        font-size: 13px; }
+        font-size: 15px; }
         #sidebar ul li > ul li a {
           border-bottom: 1px solid transparent; }
           #sidebar ul li > ul li a span {
@@ -8227,6 +8227,10 @@ h1, h2, h3, h4, h5,
     #sidebar ul li.active > a {
       background: transparent;
       color: #fc7fb2; }
+
+
+
+
   @media (max-width: 767.98px) {
     #sidebar {
       min-width: 100%;
@@ -8348,3 +8352,4 @@ a[data-toggle="collapse"] {
 
 .subscribe-form .form-control {
   border: 1px solid rgba(0, 0, 0, 0.05); }
+

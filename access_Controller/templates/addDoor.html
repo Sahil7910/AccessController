@@ -3,24 +3,48 @@
 
 
         {% block content %}
-        
         <div class="container ">
+            <div class="col-md-12">
+                 {% if messages %}
+                                <div class="form-group">
+                                <div class="col-12">
+                                    {% for message in messages %}
+                                    {% if message.tags == "error" %}
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+                                        {{ message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                    {% elif message.tags == "success" %}
+                                        <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+                                        {{ message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                    {% endif %}
+                                    {% endfor %}
+                                </div>
+                                </div>
+                                {% endif %}
+
+
             <div class="doorformContent">
-        <form action="login" method="post" id="form">
-            
-                
+        <form action="adddoor" method="post" id="form">
                 {% csrf_token %}
                     
                 <h1>Add Door</h1><br>
                 
                 <lable>Floor:</lable>
-                <input type="text"> <br>
+                <input type="text" name="floor" required> <br>
                 
                 <lable>Name:</lable>
-                <input type="text"><br>
+                <input type="text" name="name" required><br>
 
                 <label >Reader:</label>
-                <select style="margin-right:10px;margin-top:10px;" name="Reader" id="Reader">
+                <select style="margin-right:10px;margin-top:10px;" name="reader" id="Reader" required>
+                    <option selected="selected" disabled>Select Reader</option>
                     <option value="In Reader">In Reader</option>
                     <option value="Out Reader">Out Reader</option>
                 </select>    

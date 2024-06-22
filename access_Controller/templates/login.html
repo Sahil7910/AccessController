@@ -20,15 +20,29 @@
           
             <div class="formContent">
          
-              <form action="home" method="post" id="form">
+              <form action="login" method="post" id="form">
                 {% csrf_token %}
                 <h3 style="margin-left:180px;margin-top:10px">Log IN</h3><br>
 
-                <lable style="margin-left:100px;">Username:</lable><br>
+                {% comment %} <lable style="margin-left:100px;">Username:</lable><br>
                 <input type="text" id="username"  name="username" placeholder="username"><br>
                 <lable style="margin-left:100px;">Password:</lable><br>
-                <input type="text" id="password"  name="password" placeholder="password">
-                <input type="submit" style="margin-left:130px;margin-top:20px;" value="Log In">
+                <input type="password" id="password"  name="password" placeholder="password">
+                <input type="submit" style="margin-left:130px;margin-top:20px;" value="Log In"> {% endcomment %}
+                
+                  <div class="mb-3">
+                    <label for="username" class="form-label">Username:</label>
+                    <input type="username" class="form-control1" name="username" >
+                    
+                  </div>
+                  <div class="mb-3">
+                    <label for="Password1" class="form-label">Password:</label>
+                    <input type="password" class="form-control1" name="password">
+                  </div>
+                 
+                  <button style="margin-left:180px" type="submit" class="btn btn-primary">Submit</button>
+            
+
               </form>
           
             

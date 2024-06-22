@@ -4,58 +4,38 @@
 {% block content %}
 
 
-<div id="content" class="p-5 p-md-5 pt-5">
-<table class="table">
+<div class="table-responsive-xxl"> 
+  <table  class="table table-striped   table-bordered">
   <thead>
     <tr>
       <th scope="col">#</th>
       <th scope="col">Floor</th>
       <th scope="col">Name</th>
-      <th scope="col">In Reader</th>
-      <th scope="col">Out Reader</th>
+      <th scope="col">Reader</th>
       <th scope="col">Last Access</th>
       <th scope="col">Action</th>
     </tr>
   </thead>
 
   <tbody>
-    <tr>
     
-          <th scope="row">10293023920139</th>
-          <td>First</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>@mdo</td>
-          <td>@mdo</td>
-          <td><button type="button" class="btn btn-primary">Edit</button></td>  
+      {% for doors in doors%}
+
+      <tr>
+        <td>{{doors.id}}</td>
+        <td>{{ doors.floor }}</td>
+        <td>{{ doors.name }}</td>
+        <td>{{ doors.reader }}</td>
+        <td>{{ doors.lastaccess }}</td>
+        <td><button type="button" class="btn btn-primary">Edit</button></td> 
     </tr>
-    <tr>
-    
-      <th scope="row">213216732817362</th>
-      <td>Second</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td><button type="button" class="btn btn-primary">Edit</button></td>  
-</tr>
+        
+         
 
-<tr>
-    
-  <th scope="row">372737273237373</th>
-  <td>Third</td>
-  <td>Otto</td>
-  <td>@mdo</td>
-  <td>@mdo</td>
-  <td>@mdo</td>
-  <td><button type="button" class="btn btn-primary">Edit</button></td>  
-</tr>
-  </tbody>
-
-
+      {% endfor %}
 
 
 </table>
 </div>
-
+</div>
 {% endblock %}

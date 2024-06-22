@@ -26,7 +26,10 @@ SECRET_KEY = 'django-insecure-y&*ycghu4u4sc0ooo02fo2tfr+=@m_vh=te9gwhmf*a16@!8d4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['192.168.1.38']
+# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+
 
 
 # Application definition
@@ -38,7 +41,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'bootstrap5',
+    'fontawesomefree',
+    'django_pandas',
+    'controller1',
+    'rest_framework',
+    
 ]
 
 MIDDLEWARE = [
@@ -77,8 +84,12 @@ WSGI_APPLICATION = 'access_Controller.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'accesscontroller',
+        'USER':'root',
+        'PASSWORD':'admin',
+        'HOST':'localhost',
+        'PORT':'3306'
     }
 }
 
